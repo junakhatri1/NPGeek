@@ -5,11 +5,11 @@
 
 @{
     @ViewBag.Title = "Detail";
-    Layout = Layout = "~/Views/Shared/Layout.cshtml";
+    Layout ="~/Views/Shared/Layout.cshtml";
 }
 
 <div>
-    <img src="@Url.Content("~/Content/img/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName"/>
+    <img src="@Url.Content("~/Content/img/parks/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName"/>
     <h2> @Model.ParkName, @Model.State. Founded in @Model.YearFounded</h2>
     <p> <i>  @Model.InspirationalQuote -@Model.InspirationalQuoteSource</i></p>
   <p>Acreage: @Model.Acreage </p>

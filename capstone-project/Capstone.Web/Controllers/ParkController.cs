@@ -34,5 +34,12 @@ namespace Capstone.Web.Controllers
             return View("Index", parks);
         }
 
+        [HttpGet]
+        public ActionResult Detail(string parkCode)
+        {
+            Park park = parkDal.GetPark(parkCode);
+            return View("Detail", park);
+        }
+
     }
 }

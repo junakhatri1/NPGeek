@@ -13,10 +13,10 @@
 
             <li>
                 <a href="@Url.Action("Detail", "Park", new {parkCode = p.ParkCode})">
-                    <img src="@Url.Content("~/Content/img/" + p.ParkCode + ".jpg")" alt="@p.ParkName" />
+                    <img src="@Url.Content("~/Content/img/parks/" + p.ParkCode + ".jpg")" alt="@p.ParkName" />
                 </a>
-                <p>@p.ParkName</p>
-                <p> @p.State</p>
+                <p>@p.ParkName, @p.State</p>
+               
                 <p>@p.ParkDescription</p>
             </li>
 
