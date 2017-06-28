@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Capstone.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Capstone.Web.DAL
 {
-    public class IWeatherDAL
+    public interface IWeatherDAL
     {
+        List<Weather> GetFiveDaysWeather(string parkcode);
+
     }
 }

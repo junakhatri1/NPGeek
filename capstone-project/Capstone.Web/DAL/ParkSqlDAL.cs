@@ -11,15 +11,17 @@ namespace Capstone.Web.DAL
     public class ParkSqlDAL : IParkDAL
     {
         readonly string connectionString;
-        readonly IParkDAL parkDAL;
+        readonly IWeatherDAL weatherDal;
+   
 
         const string SQL_GetAllParks = "SELECT * FROM park;";
         const string SQL_GetParkByParkCode = "SELECT * FROM park WHERE parkCode = @parkCode;";
 
-        public ParkSqlDAL(string connectionString, IParkDAL parkDAL)
+        public ParkSqlDAL(string connectionString, IWeatherDAL weatherDal)
         {
             this.connectionString = connectionString;
-            this.parkDAL = parkDAL;
+            this.weatherDal = weatherDal;
+           
         }
 
         public List<Park> GetAllParks()
@@ -49,6 +51,7 @@ namespace Capstone.Web.DAL
                     conn.Open();
 
                     Park park = conn.QueryFirstOrDefault<Park>(SQL_GetParkByParkCode, new { parkCode = parkCode });
+                    park.fiveDaysWeather = weatherDal.GetFiveDaysWeather(park.ParkCode);
                     return park;
                 }
             }

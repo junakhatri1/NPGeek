@@ -6,18 +6,22 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-    <div>
-        <ul>
-            @foreach(Park p in Model)
-            {
-                <li>
-                    <a href="@Url.Action("Detail", "Park", new {parkCode = p.ParkCode})">
-                        <img src="@Url.Content("~/Content/img/" + p.ParkCode + ".jpg")" alt="@p.ParkName" />
-                    </a>
-                    <p>p.Name</p>
-                </li>
-            }
-        </ul>
-    </div>
+<div>
+    <ul>
+        @foreach (Park p in Model)
+        {
+
+            <li>
+                <a href="@Url.Action("Detail", "Park", new {parkCode = p.ParkCode})">
+                    <img src="@Url.Content("~/Content/img/" + p.ParkCode + ".jpg")" alt="@p.ParkName" />
+                </a>
+                <p>@p.ParkName</p>
+                <p> @p.State</p>
+                <p>@p.ParkDescription</p>
+            </li>
+
+        }
+    </ul>
+</div>
 
 
