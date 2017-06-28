@@ -4,27 +4,80 @@
 
 
 @{
-    @ViewBag.Title = "Detail";
-    Layout ="~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <div>
-    <img src="@Url.Content("~/Content/img/parks/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName"/>
+    <img src="@Url.Content("~/Content/img/parks/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" />
     <h2> @Model.ParkName, @Model.State. Founded in @Model.YearFounded</h2>
     <p> <i>  @Model.InspirationalQuote -@Model.InspirationalQuoteSource</i></p>
-  <p>Acreage: @Model.Acreage </p>
-    <p> Elevation: @Model.ElevationInFeet</p>
-    <p> Miles of Trail: @Model.MilesOfTrail</p>
+    <p>Acreage: @Model.Acreage </p>
+    <p> Elevation: @Model.ElevationInFeet feet</p>
+    <p> Miles of Trail: @Model.MilesOfTrail miles</p>
     <p>Number of Campsites: @Model.NumberOfCampsites</p>
     <p> Climate: @Model.Climate</p>
     <p>Number of Annual Visitors: @Model.AnnualVisitorCount</p>
-    <p> Entry Fee: $@Model.EntryFee </p>
+    @if (Model.EntryFee == 0)
+    {
+        <p>Entry Fee: Free</p>
+    }
+    @if (Model.EntryFee != 0)
+    {
+        <p>Entry Fee: $@Model.EntryFee </p>
+    }
     <p>Number of Animal Species: @Model.NumberOfAnimalSpecies</p>
     <p>@Model.ParkDescription</p>
- 
+
 </div>
 
 <div>
+    @{
+        string selectInDegrees = "";
+        int high;
+        int low;
+    }
+    @using (Html.BeginForm("Detail", "Park", FormMethod.Get))
+    {
+        <div>
+            @Html.Label("°F")
+            @Html.RadioButton("selectInDegrees", "F", true)
+            @Html.Label("°C")
+            @Html.RadioButton("selectInDegrees", "C", false)
+           
+        </div>
+    }
+    <h3>Today</h3>
+
+    @*<img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[0].Forecast + ".png")" alt="Model.fiveDaysWeather[0].Forecast" />"
+    @if(selectInDegrees == "C")
+    {
+        Model.ChangeToCelsius(Model.fiveDaysWeather[0].High);
+
+    }*@
+
+
+
+    @for (int i = 0; i < Model.fiveDaysWeather.Count; i++)
+    {
+
+        <div>
+            <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[i].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" />
+             @if (selectInDegrees == "C")
+             {
+              high =   Model.ChangeToCelsius(Model.fiveDaysWeather[i].High);
+               low =   Model.ChangeToCelsius(Model.fiveDaysWeather[i].Low);
+                 <p> High: @high      Low: @low</p>
+
+             }
+
+            <p> High @Model.fiveDaysWeather[i].High        Low: @Model.fiveDaysWeather[i].Low</p>
+
+
+        </div>
+    }
+
+
 
 
 

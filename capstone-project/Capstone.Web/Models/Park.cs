@@ -24,5 +24,12 @@ namespace Capstone.Web.Models
         public int NumberOfAnimalSpecies { get; set; }
 
         public List<Weather> fiveDaysWeather { get; set; }
+
+        public int ChangeToCelsius(int temperature)
+        {
+            double degrees = (temperature - 32) * (5 / 9);
+            return Convert.ToInt32(degrees);
+
+        }
     }
 }
