@@ -35,10 +35,34 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult DetailCelsius(string parkCode)
+        public ActionResult Detail(string parkCode)
         {
+            string tempScale = GetTempScale();
             Park park = parkDal.GetPark(parkCode);
-            return View("DetailCelsius", park);
+
+            return View("Detail", park);
+        }
+
+       [HttpPost]
+       public ActionResult Detail( Park park )
+        {
+            Session["tempScale"] = park.TempScale;
+            park = parkDal.GetPark(park.ParkCode);
+            park.TempScale = (string)Session["tempScale"];
+            return View("Detail", park);
+        }
+
+        private string GetTempScale()
+        {
+            string tempScale = Convert.ToString(Session["tempScale"]);
+
+            if(Session["tempScale"] == null)
+            {
+                tempScale = "F";
+                Session["tempScale"] = tempScale;
+            }
+
+            return tempScale; 
         }
 
     }

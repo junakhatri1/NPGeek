@@ -1,0 +1,43 @@
+﻿@using Capstone.Web.Models;
+@model Survey 
+@{
+    ViewBag.Title = "Survey";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+    <h2>National Park Survey</h2>
+   
+@using(Html.BeginForm("Survey", "Survey", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.ParkCode)
+        @Html.DropDownListFor(m => m.ParkCode, Survey.AllParkNames)
+        @Html.ValidationMessageFor(m => m.ParkCode)
+    </div>
+
+
+    <div>
+        @Html.LabelFor(m => m.EmailAddress)
+        @Html.TextBoxFor(m => m.EmailAddress)
+        @Html.ValidationMessageFor(m => m.EmailAddress)
+    </div>
+
+
+    <div>
+        @Html.LabelFor(m => m.State)
+        @Html.DropDownListFor(m => m.State, Survey.States)
+       
+    </div>
+
+    <div>
+        @Html.Label("Inactive")
+        @Html.CheckBox("Inactive", false)
+        @Html.Label("Sedentary")
+        @Html.CheckBox("Sedentary", false)
+        @Html.Label("Active")
+        @Html.CheckBox("Active", false)
+        @Html.Label("Extremely Active")
+        @Html.CheckBox("Extremely Active", false)
+
+    </div>
+
+}

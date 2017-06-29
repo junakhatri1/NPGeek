@@ -16,7 +16,9 @@ namespace Capstone.Web.Controllers
         {
             this.parkDAL = parkDAL;
         }
+
         // GET: Survey
+
         public ActionResult Survey()
         {
             return View("Survey");
@@ -27,6 +29,7 @@ namespace Capstone.Web.Controllers
         public ActionResult Survey(Survey model)
         {
             List<Park> AllParks = parkDAL.GetAllParks();
+            return View("Survey");
         }
     }
 }
