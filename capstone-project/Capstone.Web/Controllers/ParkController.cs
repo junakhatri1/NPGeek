@@ -35,10 +35,10 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Detail(string parkCode)
+        public ActionResult DetailCelsius(string parkCode)
         {
             Park park = parkDal.GetPark(parkCode);
-            return View("Detail", park);
+            return View("DetailCelsius", park);
         }
 
     }

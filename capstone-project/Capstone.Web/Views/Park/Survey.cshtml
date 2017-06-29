@@ -1,17 +1,14 @@
-﻿@{
-    Layout = null;
+﻿@using Capstone.Web.Models;
+@model Survey 
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
+    <h2>National Park Survey</h2>
+   
+@using(Html.BeginForm("Survey", "Survey", FormMethod.Post))
+{
     <div>
-    
+        @Html.LabelFor(m => m.)
     </div>
-</body>
-</html>
+}

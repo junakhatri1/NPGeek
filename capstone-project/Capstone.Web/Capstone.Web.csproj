@@ -155,6 +155,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParkController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="DAL\IParkDAL.cs" />
     <Compile Include="DAL\IWeatherDAL.cs" />
     <Compile Include="DAL\ParkSqlDAL.cs" />
@@ -176,6 +177,7 @@
     <Content Include="Views\Park\Favorite.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Park\DetailCelsius.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,6 +188,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Survey\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

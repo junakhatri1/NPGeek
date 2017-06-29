@@ -32,21 +32,11 @@
 </div>
 
 <div>
-    @{
-        string selectInDegrees = "";
-        int high;
-        int low;
-    }
-    @using (Html.BeginForm("Detail", "Park", FormMethod.Get))
-    {
-        <div>
-            @Html.Label("°F")
-            @Html.RadioButton("selectInDegrees", "F", true)
-            @Html.Label("°C")
-            @Html.RadioButton("selectInDegrees", "C", false)
-           
-        </div>
-    }
+
+    <div>
+        <a href="/Index/DetailCelsius">Change to Celsius</a>
+    </div>
+
     <h3>Today</h3>
 
     @*<img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[0].Forecast + ".png")" alt="Model.fiveDaysWeather[0].Forecast" />"
@@ -63,15 +53,14 @@
 
         <div>
             <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[i].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" />
-             @if (selectInDegrees == "C")
-             {
-              high =   Model.ChangeToCelsius(Model.fiveDaysWeather[i].High);
-               low =   Model.ChangeToCelsius(Model.fiveDaysWeather[i].Low);
-                 <p> High: @high      Low: @low</p>
-
-             }
-
             <p> High @Model.fiveDaysWeather[i].High        Low: @Model.fiveDaysWeather[i].Low</p>
+            @if(Model.fiveDaysWeather[i] == Model.fiveDaysWeather[0])
+            {
+                @Model.RecommendationForecast(Model.fiveDaysWeather[0].Forecast)
+                @Model.RecommendationTemp(Model.fiveDaysWeather[0].High, Model.fiveDaysWeather[0].Low)
+            }
+
+
 
 
         </div>
