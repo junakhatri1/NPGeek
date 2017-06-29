@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Capstone.Web.DAL;
+using Capstone.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,23 @@ namespace Capstone.Web.Controllers
 {
     public class SurveyController : Controller
     {
-        // GET: Survey
-        public ActionResult Index()
+        private IParkDAL parkDAL;
+
+        public SurveyController(IParkDAL parkDAL)
         {
-            return View();
+            this.parkDAL = parkDAL;
+        }
+        // GET: Survey
+        public ActionResult Survey()
+        {
+            return View("Survey");
+        }
+
+
+        [HttpPost]
+        public ActionResult Survey(Survey model)
+        {
+            List<Park> AllParks = parkDAL.GetAllParks();
         }
     }
 }
