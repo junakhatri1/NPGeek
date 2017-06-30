@@ -8,7 +8,7 @@
 
 <section>
 
-        @using (Html.BeginForm("Survey", "Survey", FormMethod.Post))
+        @using (Html.BeginForm("FavoriteParks", "Survey", FormMethod.Post))
         {
             <div class="form-group">
 
@@ -27,7 +27,7 @@
                     <div class="form-width">
                         @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
                         </div>
-                        @Html.ValidationMessageFor(m => m.EmailAddress)
+                        @Html.ValidationMessageFor(m => m.EmailAddress, String.Empty)
                     </div>
 
 
@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                <div class="form-inline ">
+                @*<div class="form-inline ">
                     
                         @Html.Label("Inactive")
                     <div class="checkbox">
@@ -56,8 +56,27 @@
                             <div class="checkbox">
                                 @Html.CheckBox("Extremely Active", false, new { @class = "form-control" })
 
-                            </div>
+                            </div>*@
+                   
+            
+                      <div class="radio">
+                        @Html.Label("Inactive", new { @class = "form-check-label" })
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Inactive", new { @class = "radio-inline" })
+                        @Html.ValidationMessageFor(m => m.ActivityLevel, String.Empty)
+
+                        @Html.Label("Sedentary")
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Sedentary", new { @class = "radio-inline" })
+                        @Html.ValidationMessageFor(m => m.ActivityLevel, String.Empty)
+
+                        @Html.Label("Active", new { @class = "form-check-label" })
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Active", new { @class = "radio-inline" })
+                        @Html.ValidationMessageFor(m => m.ActivityLevel, String.Empty)
+
+                        @Html.Label("Extremely Active")
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Extremely Active", new { @class = "radio-inline" })
+                        @Html.ValidationMessageFor(m => m.ActivityLevel, String.Empty)
                     </div>
+                    
                     
                 <button type="submit" class="btn btn-primary">Submit</button>
 

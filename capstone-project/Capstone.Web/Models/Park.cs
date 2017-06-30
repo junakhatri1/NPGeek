@@ -47,9 +47,13 @@ namespace Capstone.Web.Models
             {
                 return "Seek shelter and avoid hiking on exposed ridges!";
             }
-            else
+            else if(forecast == "sunny")
             {
                 return "Pack your sunblock!";
+            }
+            else
+            {
+                return "";
             }
             
         }
@@ -78,7 +82,7 @@ namespace Capstone.Web.Models
             }
             else
             {
-                return "Have a nice day!";
+                return "";
             }
         }
     }

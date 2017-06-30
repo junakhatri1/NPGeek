@@ -158,8 +158,10 @@
     <Compile Include="Controllers\ParkController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="DAL\IParkDAL.cs" />
+    <Compile Include="DAL\ISurveyDAL.cs" />
     <Compile Include="DAL\IWeatherDAL.cs" />
     <Compile Include="DAL\ParkSqlDAL.cs" />
+    <Compile Include="DAL\SurveySqlDAL.cs" />
     <Compile Include="DAL\WeatherSqlDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,7 +177,7 @@
     <Content Include="Views\Park\Index.cshtml" />
     <Content Include="Views\Park\Detail.cshtml" />
     <Content Include="Views\Survey\Survey.cshtml" />
-    <Content Include="Views\Park\Favorite.cshtml" />
+    <Content Include="Views\Survey\FavoriteParks.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">

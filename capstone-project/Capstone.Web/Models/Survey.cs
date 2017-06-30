@@ -20,7 +20,7 @@ namespace Capstone.Web.Models
 
 
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "Please Enter an Email Address")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
@@ -30,7 +30,7 @@ namespace Capstone.Web.Models
         [Required(ErrorMessage = "*")]
         public string State { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "Please Select Your Activity Level")]
         [Display(Name = "Activity Level")]
         public string ActivityLevel { get; set; }
 
