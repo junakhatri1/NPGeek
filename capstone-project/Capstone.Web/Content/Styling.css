@@ -42,5 +42,10 @@ td{
 .form-width{
     width: 300px;
     display: inline-block;
+  
+}
+
+.boxes{
+    padding: 20px;
 }
 
