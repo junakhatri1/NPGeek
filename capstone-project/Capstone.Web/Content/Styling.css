@@ -1,0 +1,46 @@
+﻿body {
+   
+}
+
+
+.headerStyle{
+    height: 160px;
+}
+
+.headerContainer {
+    background-color: #B3B6B7;
+    
+}
+
+.navStyle {
+    background-color: #52BE80;
+}
+
+.imgList{
+    width: 330px;
+    float: left;
+    
+}
+td{
+    text-align: justify;    
+}
+
+.detailImg{
+    width: 100%;
+    height: 400px;
+}
+
+.weatherImg{
+ width: 130px;
+ 
+}
+
+.backgroundColor {
+    background-color: #FDF3E7;
+}
+
+.form-width{
+    width: 300px;
+    display: inline-block;
+}
+

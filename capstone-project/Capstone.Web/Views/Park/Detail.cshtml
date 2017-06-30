@@ -7,67 +7,75 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+ 
+    <div class="container">
+        <img src="@Url.Content("~/Content/img/parks/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" class="detailImg" />
+        <h2> @Model.ParkName, @Model.State </h2>
 
-<div>
-    <img src="@Url.Content("~/Content/img/parks/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" />
-    <h2> @Model.ParkName, @Model.State. Founded in @Model.YearFounded</h2>
-    <p> <i>  @Model.InspirationalQuote -@Model.InspirationalQuoteSource</i></p>
-    <p>Acreage: @Model.Acreage </p>
-    <p> Elevation: @Model.ElevationInFeet feet</p>
-    <p> Miles of Trail: @Model.MilesOfTrail miles</p>
-    <p>Number of Campsites: @Model.NumberOfCampsites</p>
-    <p> Climate: @Model.Climate</p>
-    <p>Number of Annual Visitors: @Model.AnnualVisitorCount</p>
-    @if (Model.EntryFee == 0)
-    {
-        <p>Entry Fee: Free</p>
-    }
-    @if (Model.EntryFee != 0)
-    {
-        <p>Entry Fee: $@Model.EntryFee </p>
-    }
-    <p>Number of Animal Species: @Model.NumberOfAnimalSpecies</p>
-    <p>@Model.ParkDescription</p>
+        <p> <i> <b> @Model.InspirationalQuote - @Model.InspirationalQuoteSource  </b></i></p>
+        <p>Year Established:  @Model.YearFounded  </p>
+        <p>Acreage: @Model.Acreage </p>
+        <p> Elevation: @Model.ElevationInFeet feet</p>
+        <p> Trail: @Model.MilesOfTrail miles</p>
+        <p>Number of Campsites: @Model.NumberOfCampsites</p>
+        <p> Climate: @Model.Climate</p>
+        <p>Number of Annual Visitors: @Model.AnnualVisitorCount</p>
+        @if (Model.EntryFee == 0)
+        {
+            <p>Entry Fee: Free</p>
+        }
+        @if (Model.EntryFee != 0)
+        {
+            <p>Entry Fee: $@Model.EntryFee </p>
+        }
+        <p>Number of Animal Species: @Model.NumberOfAnimalSpecies</p>
+        <p>@Model.ParkDescription</p>
 
-</div>
-
-<div>
+    </div>
 
 
-    <h3>Today</h3>
-    @using (Html.BeginForm("Detail", "Park", FormMethod.Post))
-    {
-        @Html.Label("F")
-        @Html.RadioButtonFor(m => m.TempScale, "F")
-        @Html.Label("C")
-        @Html.RadioButtonFor(m => m.TempScale, "C")
-        @Html.HiddenFor(m => m.ParkCode)
-      
-        <button type="submit"> Submit</button>
-    }
 
-    @for (int i = 0; i < Model.fiveDaysWeather.Count; i++)
-    {
+    <div class=" form-group">
 
-        <div>
-            <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[i].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" />
+        @using (Html.BeginForm("Detail", "Park", FormMethod.Post))
+        {
+            @Html.Label("F", new { @class = "form-check-label" })
+            @Html.RadioButtonFor(m => m.TempScale, "F", new { @class = "checkbox-inline" })
+            @Html.Label("C")
+            @Html.RadioButtonFor(m => m.TempScale, "C", new { @class = "checkbox-inline" })
+            @Html.HiddenFor(m => m.ParkCode)
 
-            @if (Model.TempScale == "C")
-            {
-                <p> High @Model.ChangeToCelsius(Model.fiveDaysWeather[i].High)     Low @Model.ChangeToCelsius(Model.fiveDaysWeather[i].Low)</p>
-             
-            }
-            else
-            {
-            <p> High @Model.fiveDaysWeather[i].High        Low: @Model.fiveDaysWeather[i].Low</p>
-            }
+            <button class="btn btn-outline-info" type="submit"> Click Me!</button>
+        }
+    </div>
 
-            @if (Model.fiveDaysWeather[i] == Model.fiveDaysWeather[0])
-            {
-                @Model.RecommendationForecast(Model.fiveDaysWeather[0].Forecast)
-                @Model.RecommendationTemp(Model.fiveDaysWeather[0].High, Model.fiveDaysWeather[0].Low)
-            }
+    <div>
+        <h3>Today</h3>
 
+        @for (int i = 0; i < Model.fiveDaysWeather.Count; i++)
+        {
+            <div class="col-xs-2">
+
+                <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[i].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" class="weatherImg" />
+
+                @if (Model.TempScale == "C")
+                {
+                    <p> <b> High</b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].High)     <b> Low</b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].Low)</p>
+
+                }
+                else
+                {
+                    <p> <b> High</b>  @Model.fiveDaysWeather[i].High        <b> Low</b> @Model.fiveDaysWeather[i].Low</p>
+                }
+
+                @if (Model.fiveDaysWeather[i] == Model.fiveDaysWeather[0])
+                {
+                    @Model.RecommendationForecast(Model.fiveDaysWeather[0].Forecast)
+                    @Model.RecommendationTemp(Model.fiveDaysWeather[0].High, Model.fiveDaysWeather[0].Low)
+                }
+
+            </div>
+
+        }
         </div>
-    }
-</div>
+

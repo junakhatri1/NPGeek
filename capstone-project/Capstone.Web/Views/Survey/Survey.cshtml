@@ -5,39 +5,62 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
     <h2>National Park Survey</h2>
-   
-@using(Html.BeginForm("Survey", "Survey", FormMethod.Post))
-{
-    <div>
-        @Html.LabelFor(m => m.ParkCode)
-        @Html.DropDownListFor(m => m.ParkCode, Survey.AllParkNames)
-        @Html.ValidationMessageFor(m => m.ParkCode)
-    </div>
+
+<section >
+
+        @using (Html.BeginForm("Survey", "Survey", FormMethod.Post))
+        {
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.ParkCode)
+                <div class="form-width">
+                    
+                        @Html.DropDownListFor(m => m.ParkCode, Survey.AllParkNames, new { @class = "form-control" })
+                    </div>
+               
+                         @Html.ValidationMessageFor(m => m.ParkCode)
+           
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmailAddress)
+                    <div class="form-width">
+                        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.EmailAddress)
+                    </div>
 
 
-    <div>
-        @Html.LabelFor(m => m.EmailAddress)
-        @Html.TextBoxFor(m => m.EmailAddress)
-        @Html.ValidationMessageFor(m => m.EmailAddress)
-    </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.State)
+                    <div class="form-width">
+                        @Html.DropDownListFor(m => m.State, Survey.States, new { @class = "form-control" })
+                        </div>
+                    </div>
 
+                <div class="form-inline ">
+                    
+                        @Html.Label("Inactive")
+                    <div class="checkbox">
+                        @Html.CheckBox("Inactive", false, new { @class = " form-control" })
+                        </div>
+                        @Html.Label("Sedentary")
+                    <div class="checkbox">
+                        @Html.CheckBox("Sedentary", false, new { @class = "form-control" })
+                        </div>
+                        @Html.Label("Active")
+                        <div class="checkbox">
+                            @Html.CheckBox("Active", false, new { @class = "form-control" })
+                            </div>
+                            @Html.Label("Extremely Active")
+                            <div class="checkbox">
+                                @Html.CheckBox("Extremely Active", false, new { @class = "form-control" })
 
-    <div>
-        @Html.LabelFor(m => m.State)
-        @Html.DropDownListFor(m => m.State, Survey.States)
-       
-    </div>
+                            </div>
+                    </div>
+                    
+                <button type="submit" class="btn btn-primary">Submit</button>
 
-    <div>
-        @Html.Label("Inactive")
-        @Html.CheckBox("Inactive", false)
-        @Html.Label("Sedentary")
-        @Html.CheckBox("Sedentary", false)
-        @Html.Label("Active")
-        @Html.CheckBox("Active", false)
-        @Html.Label("Extremely Active")
-        @Html.CheckBox("Extremely Active", false)
+        }
+</section>
 
-    </div>
-
-}

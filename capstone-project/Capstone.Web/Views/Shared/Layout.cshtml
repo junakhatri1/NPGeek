@@ -4,33 +4,48 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Styling.css" rel="stylesheet" type="text/css" />   
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body>
-    <header>
-<img src="~/Content/img/logo.png" />
+<body class=" backgroundColor">
+    <section>
+        <div>
+            <header>
+                <div class="headerContainer">
+                    <img class="headerStyle" src="~/Content/img/logo.png" />
 
+                </div>
+            </header>
 
-    </header>
-    <nav>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Park")</li>
-                        <li>@Html.ActionLink("Survey", "Survey", "Survey")</li>
-            </ul>
+            <nav class=" navbar navbar-default" style="background-color: #FF9009">
+                <div class="container">
+                    <div class="navbar-header">
+                        <ul class="nav nav-pills list-group">
+                             <li>@Html.ActionLink("Home", "Index", "Park")</li> 
+                            <li>@Html.ActionLink("Survey", "Survey", "Survey")</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-        </nav>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
 
+
+        <div class="container">
+
+            <div>
+                @RenderBody()
+                <hr />
+
+            </div>
+
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <script src="~/Scripts/salvattore.min.js"></script>
         </div>
 
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Scripts/salvattore.min.js"></script>
-
+        <footer class="navbar navbar-default" style="background-color: #FF9009"></footer>
+    </section>
 </body>
 </html>
