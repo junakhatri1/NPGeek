@@ -43,15 +43,12 @@ namespace Capstone.Web.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult FavoriteParks(Survey survey)
+        [HttpGet]
+        public ActionResult FavoriteParks()
         {
-            Park park = parkDAL.GetPark(survey.ParkCode);
-            return View("FavoriteParks");
-           
-        }
-
-        
+            Dictionary<List<string>, int> GetUniqueParks = surveyDAL.GetUniqueParks();       
+            return View("FavoriteParks", GetUniqueParks);          
+        }       
 
     }
 }

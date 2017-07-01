@@ -1,17 +1,49 @@
-﻿@{
-    Layout = null;
+﻿@using Capstone.Web.Models;
+@model Dictionary<List<string>,int>
+
+@{
+    ViewBag.Title = "Favourite Park";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
+<section class=" container favPage">
+
+<h2 class="text-muted"> Favorite Parks </h2>
     <div>
-    
+
+      
+            
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Name</th>
+                    <th> Survey </th>
+                </tr>
+            </thead>
+            <tbody class="tab-content">
+                @{
+
+                    foreach (KeyValuePair<List<string>, int> fav in Model)
+                    {
+
+                        <tr>
+                            <td>   <img src="@Url.Content("~/Content/img/parks/" + fav.Key[0] + ".jpg")" alt="@fav.Key[1]" class="favouriteParkImg" /> </td>
+                            <td class="tableHeader">   <p> @fav.Key[1]</p> </td>
+                            <td class="tableHeader">   <p> @fav.Value</p> </td>
+                        </tr>
+
+                        }
+                    }
+            </tbody>
+        </table>
+
+        
+
     </div>
-</body>
-</html>
+
+   
+
+
+</section>

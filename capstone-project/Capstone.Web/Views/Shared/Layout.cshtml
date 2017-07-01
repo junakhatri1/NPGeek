@@ -15,7 +15,6 @@
             <header>
                 <div class="headerContainer">
                     <img class="headerStyle" src="~/Content/img/logo.png" />
-
                 </div>
             </header>
 
@@ -25,6 +24,7 @@
                         <ul class="nav nav-pills list-group">
                              <li class="navbar-brand">@Html.ActionLink("Home", "Index", "Park")</li> 
                             <li class="navbar-brand">@Html.ActionLink("Survey", "Survey", "Survey")</li>
+                            <li class="navbar-brand">@Html.ActionLink("Favorite Parks", "FavoriteParks","Survey" )</li>
                         </ul>
                     </div>
                 </div>
@@ -44,8 +44,9 @@
             <script src="~/Scripts/bootstrap.min.js"></script>
             <script src="~/Scripts/salvattore.min.js"></script>
         </div>
-
-        <footer class="navbar navbar-default" style="background-color: #FF9009"></footer>
+        <div>
+            <footer class="navbar navbar-inverse" style="background-color: #FF9009"></footer>
+        </div>
     </section>
 </body>
 </html>

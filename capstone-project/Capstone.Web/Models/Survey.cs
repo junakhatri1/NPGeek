@@ -17,27 +17,26 @@ namespace Capstone.Web.Models
         [Required(ErrorMessage = "*")]
         public string ParkCode { get; set; }
 
-
-
-
-        [Required(ErrorMessage = "Please Enter an Email Address")]
+        [Required(ErrorMessage = "*")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [EmailAddress(ErrorMessage = "Invalid Email")]
         public string EmailAddress { get; set; }
 
 
         [Required(ErrorMessage = "*")]
         public string State { get; set; }
 
-        [Required(ErrorMessage = "Please Select Your Activity Level")]
+        [Required(ErrorMessage = "Select one")]
         [Display(Name = "Activity Level")]
         public string ActivityLevel { get; set; }
 
-        public List<Park> parks { get; set; }
+     //   public List<Park> parks { get; set; }
+       //public Dictionary<List<string>, int> GetAllUniqueParks { get; set; }
 
         public static List<SelectListItem> AllParkNames { get; } = new List<SelectListItem>()
        {
+            new SelectListItem() {Text = "SELECT ONE ", Value = "" },
            new SelectListItem() {Text = "Cuyahoga Valley National Park", Value = "CVNP" },
            new SelectListItem() {Text = "Everglades National Park", Value = "ENP" },
            new SelectListItem() {Text = "Grand Canyon National Park", Value = "GCNP" },
@@ -53,6 +52,7 @@ namespace Capstone.Web.Models
 
         public static List<SelectListItem> States = new List<SelectListItem>()
     {
+        new SelectListItem() {Text = "SELECT ONE", Value = ""},
         new SelectListItem() {Text = "Alabama", Value = "AL"},
         new SelectListItem() {Text = "Alaska", Value = "AK"},
         new SelectListItem() {Text = "Arizona", Value = "AZ"},
@@ -105,8 +105,6 @@ namespace Capstone.Web.Models
         new SelectListItem() {Text = "Wisconsin", Value = "WI"},
         new SelectListItem() {Text = "Wyoming", Value = "WY"}
     };
-
-
-
+       
     }
 }

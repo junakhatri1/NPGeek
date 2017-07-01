@@ -42,10 +42,66 @@ td{
 .form-width{
     width: 300px;
     display: inline-block;
+    float: right;
+    margin-right: 60%;
+   
+    
   
 }
 
 .boxes{
     padding: 20px;
 }
+.favouriteParkImg{
+    width: 250px;
+}
+
+label{
+    float: left;
+    padding-right: 60px;   
+    display: block;   
+}
+.buttoninAlign {
+    float: right;
+    margin-right: 70%;
+}
+
+.activity{
+    float: left;
+}
+.sectionMargin{
+    margin-top: 50px;
+    padding-bottom: 30px;
+    float: left;
+  
+}
+
+.box-margin{
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+
+.inactive{
+    margin-left: 60px;
+}
+
+.error{
+    margin-left: 45%;
+ 
+}
+.stateError{
+   float: right;
+}
+
+.favPage {
+    background-color: #B3B6B7;
+}
+
+.tableHeader{
+    font-family:'Comic Sans MS';
+    font-size: medium;
+    font-weight: 100;
+    text-align: left;
+}
+
 
