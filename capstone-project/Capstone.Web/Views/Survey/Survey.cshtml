@@ -6,7 +6,11 @@
 }
 <h2 class="text-muted">National Park Survey</h2>
 
-<section class="sectionMargin">
+<section class="box-margin">
+    <div class="col-sm-3 input-group" style=" position: absolute; float:right; margin-left: 60%; margin-top: -50px">
+        <img src="~/Content/img/survey/taking-a-survey.gif" width="300"/>
+    </div>
+
     <div>
     @using (Html.BeginForm("Survey", "Survey", FormMethod.Post))
     {
@@ -40,7 +44,7 @@
         <div class="radio row box-margin">
             <b class="activity">  Activity Level</b>
             <div>
-                @Html.Label("Inactive")
+                @Html.Label("Inactive", new { @class = "inactive" })
                 @Html.RadioButtonFor(m => m.ActivityLevel, "Inactive")
 
                 @Html.Label("Sedentary")

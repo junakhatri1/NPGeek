@@ -18,13 +18,13 @@
                 </div>
             </header>
 
-            <nav class=" navbar navbar-inverse" style="background-color: #FF9009">
+            <nav class=" navbar navbar-inverse navBackground">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <ul class="nav nav-pills list-group">
-                             <li class="navbar-brand">@Html.ActionLink("Home", "Index", "Park")</li> 
+                            <li class="navbar-brand">@Html.ActionLink("Home", "Index", "Park")</li>
                             <li class="navbar-brand">@Html.ActionLink("Survey", "Survey", "Survey")</li>
-                            <li class="navbar-brand">@Html.ActionLink("Favorite Parks", "FavoriteParks","Survey" )</li>
+                            <li class="navbar-brand">@Html.ActionLink("Favorite Parks", "FavoriteParks", "Survey")</li>
                         </ul>
                     </div>
                 </div>
@@ -44,9 +44,11 @@
             <script src="~/Scripts/bootstrap.min.js"></script>
             <script src="~/Scripts/salvattore.min.js"></script>
         </div>
-        <div>
-            <footer class="navbar navbar-inverse" style="background-color: #FF9009"></footer>
-        </div>
+
+            <footer class="panel-footer headerContainer" style="height:80px">
+               
+            </footer>
+       
     </section>
 </body>
 </html>
