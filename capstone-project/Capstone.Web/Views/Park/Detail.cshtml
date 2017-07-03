@@ -25,15 +25,15 @@
                 </tr>
                 <tr>
                     <td>Acreage:</td>
-                    <td> @Model.Acreage </td>
+                    <td> @String.Format("{0:n0}", Model.Acreage) </td>
                 </tr>
                 <tr>
                     <td> Elevation: </td>
-                    <td> @Model.ElevationInFeet feet</td>
+                    <td> @String.Format("{0:n0}", Model.ElevationInFeet) feet</td>
                 </tr>
                 <tr>
                     <td> Trail: </td>
-                    <td> @Model.MilesOfTrail miles</td>
+                    <td> @String.Format("{0:n0}", Model.MilesOfTrail) miles</td>
                 </tr>
                 <tr>
                     <td>Number of Campsites: </td>
@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                     <td>Number of Annual Visitors: </td>
-                    <td>@Model.AnnualVisitorCount</td>
+                    <td>@String.Format("{0:n0}", Model.AnnualVisitorCount)</td>
                 </tr>
 
                 @if (Model.EntryFee == 0)
@@ -64,7 +64,7 @@
                 }
                 <tr>
                     <td>Number of Animal Species: </td>
-                    <td>@Model.NumberOfAnimalSpecies</td>
+                    <td>@String.Format("{0:n0}", Model.NumberOfAnimalSpecies)</td>
                 </tr>
             </tbody>
         </table>
@@ -117,6 +117,7 @@
                             <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[0].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" class="todayWeather" />
                         </div>
                         <div class="weatherDetail">
+                            <button type="button" class="btn btn-info weatherInfo">
                             <p> <i>@Model.fiveDaysWeather[0].Forecast.ToUpper() </i></p>
 
                             @if (Model.TempScale == "C")
@@ -131,39 +132,42 @@
                                     <p> <b>Low: </b>@Model.fiveDaysWeather[0].Low°F </p>
                             }
 
-                            @Model.RecommendationForecast(Model.fiveDaysWeather[0].Forecast)
-                            @Model.RecommendationTemp(Model.fiveDaysWeather[0].High, Model.fiveDaysWeather[0].Low)
+                            <p>@Model.RecommendationForecast(Model.fiveDaysWeather[0].Forecast)</p>
+                            <p>@Model.RecommendationTemp(Model.fiveDaysWeather[0].High, Model.fiveDaysWeather[0].Low)</p>
 
-                        </div>
+                        </button>
+                         </div>
                     </div>
                 </div>
 
                 <div class="container">
 
-                    <div>
+                    <div class="container">
 
                         @for (int i = 1; i < Model.fiveDaysWeather.Count; i++)
             {
-                            <div class="col-md-3">
+                            <div class="col-lg-3">
 
                                 <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[i].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" class="weatherImg" />
-                                <p> <i>@Model.fiveDaysWeather[i].Forecast.ToUpper() </i></p>
+                                <div class="container">
+                                <button type="button" class="btn btn-info ">
+                                    <p> <i>@Model.fiveDaysWeather[i].Forecast.ToUpper() </i></p>
 
-                                @if (Model.TempScale == "C")
+                                    @if (Model.TempScale == "C")
                 {
-                                    <p> <b> High: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].High)°C  </p>
+                                        <p> <b> High: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].High)°C  </p>
                                         <p>  <b> Low: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].Low)°C</p>
 
-                                }
-                                else
-                                {
-                                    <p> <b> High: </b> @Model.fiveDaysWeather[i].High°F  </p>
+                                    }
+                                    else
+                                    {
+                                        <p> <b> High: </b> @Model.fiveDaysWeather[i].High°F  </p>
                                         <p> <b>Low: </b>@Model.fiveDaysWeather[i].Low°F </p>
-                                }
+                                    }
+</button>
+                                    </div>
 
-
-
-                            </div>
+</div>
 
                         }
                     </div>

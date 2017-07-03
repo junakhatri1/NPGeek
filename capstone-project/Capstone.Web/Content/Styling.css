@@ -158,3 +158,9 @@ table td {
     margin-left: 70px;
 }
 
+.weatherInfo{
+    border-radius: 30px;
+    margin-left: 20px;
+    float: right;
+}
+

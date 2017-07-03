@@ -31,9 +31,6 @@ namespace Capstone.Web.Models
         [Display(Name = "Activity Level")]
         public string ActivityLevel { get; set; }
 
-     //   public List<Park> parks { get; set; }
-       //public Dictionary<List<string>, int> GetAllUniqueParks { get; set; }
-
         public static List<SelectListItem> AllParkNames { get; } = new List<SelectListItem>()
        {
             new SelectListItem() {Text = "SELECT ONE ", Value = "" },

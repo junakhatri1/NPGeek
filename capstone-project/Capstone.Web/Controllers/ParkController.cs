@@ -21,6 +21,10 @@ namespace Capstone.Web.Controllers
            
         }
 
+        public ParkController()
+        {
+        }
+
 
         // GET: Park
         [HttpGet]
