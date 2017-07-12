@@ -10,28 +10,19 @@ namespace Capstone.Web.Controllers
 {
     public class ParkController : Controller
     {
-
         private IParkDAL parkDal;
-       // private IWeatherDAL weatherDal;
 
-        public ParkController (IParkDAL parkDal)
-
+        public ParkController(IParkDAL parkDal)
         {
             this.parkDal = parkDal;
-           
         }
-
-        public ParkController()
-        {
-        }
-
 
         // GET: Park
         [HttpGet]
         public ActionResult Index()
         {
             List<Park> parks = parkDal.GetAllParks();
-            if(parks == null)
+            if (parks == null)
             {
                 return HttpNotFound();
             }
@@ -43,12 +34,15 @@ namespace Capstone.Web.Controllers
         {
             string tempScale = GetTempScale();
             Park park = parkDal.GetPark(parkCode);
-
+            if (park == null)
+            {
+                return HttpNotFound();
+            }
             return View("Detail", park);
         }
 
-       [HttpPost]
-       public ActionResult Detail( Park park )
+        [HttpPost]
+        public ActionResult Detail(Park park)
         {
             Session["tempScale"] = park.TempScale;
             park = parkDal.GetPark(park.ParkCode);
@@ -59,15 +53,12 @@ namespace Capstone.Web.Controllers
         private string GetTempScale()
         {
             string tempScale = Convert.ToString(Session["tempScale"]);
-
-            if(Session["tempScale"] == null)
+            if (Session["tempScale"] == null)
             {
                 tempScale = "F";
                 Session["tempScale"] = tempScale;
             }
-
-            return tempScale; 
+            return tempScale;
         }
-
     }
 }

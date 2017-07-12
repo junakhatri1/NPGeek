@@ -9,73 +9,80 @@
 }
 
 <div class="container">
-    <h2 class="text-center text-muted"> @Model.ParkName, @Model.State </h2>
-    <img src="@Url.Content("~/Content/img/parks/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" class="detailImg img-fluid" />
-    <br />
-    <p class="blockquote-reverse"> <i> <b> @Model.InspirationalQuote - @Model.InspirationalQuoteSource  </b></i></p>
+  
+        <h2 class="text-left text-muted"> @Model.ParkName, @Model.State </h2>
+        <div class="row">
 
+            <div class="col-md-8">
 
-    <div class="container text-justify">
-        <table>
-            <tbody>
+                <img src="@Url.Content("~/Content/img/parks/" + Model.ParkCode + ".jpg")" alt="@Model.ParkName" class="detailImg" />
+                <br />
+                <p class=" text-center blockquote"> <i> <b> @Model.InspirationalQuote - @Model.InspirationalQuoteSource  </b></i></p>
+            </div>
 
-                <tr>
-                    <td>  Year Established:</td>
-                    <td>  @Model.YearFounded </td>
-                </tr>
-                <tr>
-                    <td>Acreage:</td>
-                    <td> @String.Format("{0:n0}", Model.Acreage) </td>
-                </tr>
-                <tr>
-                    <td> Elevation: </td>
-                    <td> @String.Format("{0:n0}", Model.ElevationInFeet) feet</td>
-                </tr>
-                <tr>
-                    <td> Trail: </td>
-                    <td> @String.Format("{0:n0}", Model.MilesOfTrail) miles</td>
-                </tr>
-                <tr>
-                    <td>Number of Campsites: </td>
-                    <td>@Model.NumberOfCampsites</td>
-                </tr>
-                <tr>
-                    <td> Climate: </td>
-                    <td>@Model.Climate</td>
-                </tr>
-                <tr>
-                    <td>Number of Annual Visitors: </td>
-                    <td>@String.Format("{0:n0}", Model.AnnualVisitorCount)</td>
-                </tr>
+            <div class="col-md-4">
 
-                @if (Model.EntryFee == 0)
+                <br /> <br />
+                <table class="table">
+                    <tbody>
+
+                        <tr>
+                            <td>  Year Established:</td>
+                            <td>  @Model.YearFounded </td>
+                        </tr>
+                        <tr>
+                            <td>Acreage:</td>
+                            <td> @String.Format("{0:n0}", Model.Acreage) </td>
+                        </tr>
+                        <tr>
+                            <td> Elevation: </td>
+                            <td> @String.Format("{0:n0}", Model.ElevationInFeet) feet</td>
+                        </tr>
+                        <tr>
+                            <td> Trail: </td>
+                            <td> @String.Format("{0:n0}", Model.MilesOfTrail) miles</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Campsites: </td>
+                            <td>@Model.NumberOfCampsites</td>
+                        </tr>
+                        <tr>
+                            <td> Climate: </td>
+                            <td>@Model.Climate</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Annual Visitors: </td>
+                            <td>@String.Format("{0:n0}", Model.AnnualVisitorCount)</td>
+                        </tr>
+
+                        @if (Model.EntryFee == 0)
             {
-                    <tr>
-                        <td>Entry Fee: </td>
-                        <td>Free</td>
-                    </tr>
-                }
-                @if (Model.EntryFee != 0)
-                {
-                    <tr>
-                        <td>Entry Fee: </td>
-                        <td>$@Model.EntryFee </td>
-                    </tr>
-                }
-                <tr>
-                    <td>Number of Animal Species: </td>
-                    <td>@String.Format("{0:n0}", Model.NumberOfAnimalSpecies)</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>@Model.ParkDescription</p>
+                            <tr>
+                                <td>Entry Fee: </td>
+                                <td>Free</td>
+                            </tr>
+                        }
+                        @if (Model.EntryFee != 0)
+                        {
+                            <tr>
+                                <td>Entry Fee: </td>
+                                <td>$@Model.EntryFee </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>Number of Animal Species: </td>
+                            <td>@String.Format("{0:n0}", Model.NumberOfAnimalSpecies)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-
+<div class="container">
     <div class="row">
         <div class="weatherCont">
             <h3 class="media-heading text-center"> Weather Forecast</h3>
-
 
             <div class="weatherday1Img">
                 <div class=" form-group ">
@@ -83,66 +90,57 @@
                     @using (Html.BeginForm("Detail", "Park", FormMethod.Post))
                     {
                         <div class=" col">
-
                             @Html.Label("Fahrenheit")
                             @Html.RadioButtonFor(m => m.TempScale, "F", new { @class = "btn-circle" })
-
-
                         </div>
-                            <div class=" col">
 
-                                @Html.Label("Celsius")
-                                @Html.RadioButtonFor(m => m.TempScale, "C", new { @class = "btn-circle" })
+                        <div class=" col">
+                            @Html.Label("Celsius")
+                            @Html.RadioButtonFor(m => m.TempScale, "C", new { @class = "btn-circle" })
+                            @Html.HiddenFor(m => m.ParkCode)
+                        </div>
 
-                                @Html.HiddenFor(m => m.ParkCode)
-                            </div>
-
-                            <div class="radio-inline">
+                            <div class="col">
                                 <button class=" btn btn-danger" type="submit"> Click Me!</button>
                             </div>
-
-
                     }
                 </div>
             </div>
 
-
-
             <div class="row">
                 <div class="col col-lg-12">
-
-                    <h3 class="align">Today</h3>
                     <div>
-                        <div class="weatherday1Img">
-                            <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[0].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" class="todayWeather" />
+                        <h3 class="align">Today</h3>
+                        <div class="text-center">
+                            <div class="weatherday1Img">
+                                <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[0].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" class="todayWeather" />
+                            </div>
+                            <div class="weatherday1Img">
+                                <button type="button" class="btn btn-info weatherInfo">
+                                    <p> <i>@Model.fiveDaysWeather[0].Forecast.ToUpper() </i></p>
+
+                                    @if (Model.TempScale == "C")
+                                    {
+                                        <p> <b> High: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[0].High)°C  </p>
+                                        <p>  <b> Low: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[0].Low)°C</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p> <b> High: </b> @Model.fiveDaysWeather[0].High°F  </p>
+                                        <p> <b>Low: </b>@Model.fiveDaysWeather[0].Low°F </p>
+                                    }
+
+                                    <p>@Model.RecommendationForecast(Model.fiveDaysWeather[0].Forecast)</p>
+                                    <p>@Model.RecommendationTemp(Model.fiveDaysWeather[0].High, Model.fiveDaysWeather[0].Low)</p>
+
+                                </button>
+                            </div>
                         </div>
-                        <div class="weatherDetail">
-                            <button type="button" class="btn btn-info weatherInfo">
-                            <p> <i>@Model.fiveDaysWeather[0].Forecast.ToUpper() </i></p>
-
-                            @if (Model.TempScale == "C")
-                            {
-                                <p> <b> High: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[0].High)°C  </p>
-                                    <p>  <b> Low: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[0].Low)°C</p>
-
-                            }
-                            else
-                            {
-                                <p> <b> High: </b> @Model.fiveDaysWeather[0].High°F  </p>
-                                    <p> <b>Low: </b>@Model.fiveDaysWeather[0].Low°F </p>
-                            }
-
-                            <p>@Model.RecommendationForecast(Model.fiveDaysWeather[0].Forecast)</p>
-                            <p>@Model.RecommendationTemp(Model.fiveDaysWeather[0].High, Model.fiveDaysWeather[0].Low)</p>
-
-                        </button>
-                         </div>
                     </div>
                 </div>
 
-                <div class="container">
-
-                    <div class="container">
+                       <div class="container">
 
                         @for (int i = 1; i < Model.fiveDaysWeather.Count; i++)
             {
@@ -150,34 +148,23 @@
 
                                 <img src="@Url.Content("~/Content/img/weather/" + Model.fiveDaysWeather[i].Forecast + ".png")" alt="Model.fiveDaysWeather[i].Forecast" class="weatherImg" />
                                 <div class="container">
-                                <button type="button" class="btn btn-info ">
-                                    <p> <i>@Model.fiveDaysWeather[i].Forecast.ToUpper() </i></p>
-
-                                    @if (Model.TempScale == "C")
+                                  
+                                        @if (Model.TempScale == "C")
                 {
-                                        <p> <b> High: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].High)°C  </p>
-                                        <p>  <b> Low: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].Low)°C</p>
+                                            <p> <b> High: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].High)°C  </p>
+                                            <p>  <b> Low: </b> @Model.ChangeToCelsius(Model.fiveDaysWeather[i].Low)°C</p>
 
-                                    }
-                                    else
-                                    {
-                                        <p> <b> High: </b> @Model.fiveDaysWeather[i].High°F  </p>
-                                        <p> <b>Low: </b>@Model.fiveDaysWeather[i].Low°F </p>
-                                    }
-</button>
-                                    </div>
-
-</div>
-
-                        }
-                    </div>
-
+                                        }
+                                        else
+                                        {
+                                            <p> <b> High: </b> @Model.fiveDaysWeather[i].High°F  </p>
+                                            <p> <b>Low: </b>@Model.fiveDaysWeather[i].Low°F </p>
+                                        }                                 
+                               </div>
+                            </div>
+                        }                   
                 </div>
-
-
-
             </div>
         </div>
     </div>
-
 </div>

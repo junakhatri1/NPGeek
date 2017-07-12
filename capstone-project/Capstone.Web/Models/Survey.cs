@@ -10,10 +10,7 @@ namespace Capstone.Web.Models
 {
     public class Survey
     {
-
-
         public int SurveyId { get; set; }
-
         [Required(ErrorMessage = "*")]
         public string ParkCode { get; set; }
 
@@ -22,7 +19,6 @@ namespace Capstone.Web.Models
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Invalid Email")]
         public string EmailAddress { get; set; }
-
 
         [Required(ErrorMessage = "*")]
         public string State { get; set; }
@@ -45,7 +41,6 @@ namespace Capstone.Web.Models
            new SelectListItem() {Text = "Yellowstone National Park", Value = "YNP" },
            new SelectListItem() {Text = "Yosemite National Park", Value = "YNP2" }
        };
-
 
         public static List<SelectListItem> States = new List<SelectListItem>()
     {

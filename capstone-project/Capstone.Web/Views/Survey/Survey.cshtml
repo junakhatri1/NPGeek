@@ -4,65 +4,65 @@
     ViewBag.Title = "Survey";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-<h2 class="text-muted">National Park Survey</h2>
 
-<section class="box-margin">
-    <div class="col-sm-3 input-group" style=" position: absolute; float:right; margin-left: 60%; margin-top: -50px">
-        <img src="~/Content/img/survey/taking-a-survey.gif" width="300"/>
-    </div>
+    <h2 class="text-muted">National Park Survey</h2>
 
-    <div>
-    @using (Html.BeginForm("Survey", "Survey", FormMethod.Post))
-    {
-        <div class="form-group row">
-
-            @Html.LabelFor(m => m.ParkCode)
-            <div class=" form-width">
-                @Html.DropDownListFor(m => m.ParkCode, Survey.AllParkNames, new { @class = "form-control" })
-            </div>
-            @Html.ValidationMessageFor(m => m.ParkCode, String.Empty, new { @class = "text-danger error" })
+    <section class="box-margin">
+        <div class="col-sm-3 input-group" style=" position: absolute; float:right; margin-left: 60%; margin-top: -50px">
+            <img src="~/Content/img/survey/taking-a-survey.gif" width="300" />
         </div>
 
+        <div>
+            @using (Html.BeginForm("Survey", "Survey", FormMethod.Post))
+            {
+                <div class="form-group row">
 
+                    @Html.LabelFor(m => m.ParkCode)
+                    <div class=" form-width">
+                        @Html.DropDownListFor(m => m.ParkCode, Survey.AllParkNames, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ParkCode, String.Empty, new { @class = "text-danger stateError" })
+                </div>
 
-        <div class="form-group row box-margin">
-            @Html.LabelFor(m => m.EmailAddress)
-            <div class=" form-width">
-                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
-            </div>
-            @Html.ValidationMessageFor(m => m.EmailAddress, String.Empty, new { @class = "text-danger error" })
-        </div>
+                <div class="form-group row box-margin">
+                    
+                        @Html.LabelFor(m => m.EmailAddress)
+                        <div class=" form-width">
+                            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.EmailAddress, String.Empty, new { @class = "text-danger stateError" })
+                    </div>
+               
 
-        <div class="form-group row box-margin">
-            @Html.LabelFor(m => m.State)
-            <div class="form-width col-10">
-                @Html.DropDownListFor(m => m.State, Survey.States, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.State, String.Empty, new { @class = "text-danger stateError" })
-            </div>
-        </div>
+                <div class="form-group row box-margin">
+                    @Html.LabelFor(m => m.State)
+                    <div class="form-width col-10">
+                        @Html.DropDownListFor(m => m.State, Survey.States, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.State, String.Empty, new { @class = "text-danger stateError" })
+                    </div>
+                </div>
 
-        <div class="radio row box-margin">
-            <b class="activity">  Activity Level</b>
-            <div>
-                @Html.Label("Inactive", new { @class = "inactive" })
-                @Html.RadioButtonFor(m => m.ActivityLevel, "Inactive")
+                <div class="radio row box-margin">
+                    <b class="activity">  Activity Level</b>
+                    <div>
+                        @Html.Label("Inactive", new { @class = "inactive" })
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Inactive")
 
-                @Html.Label("Sedentary")
-                @Html.RadioButtonFor(m => m.ActivityLevel, "Sedentary", new { @class = "radio-inline" })
+                        @Html.Label("Sedentary")
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Sedentary", new { @class = "radio-inline" })
 
-                @Html.Label("Active")
-                @Html.RadioButtonFor(m => m.ActivityLevel, "Active", new { @class = "radio-inline" })
+                        @Html.Label("Active")
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Active", new { @class = "radio-inline" })
 
-                @Html.Label("Extremely Active")
-                @Html.RadioButtonFor(m => m.ActivityLevel, "Extremely Active", new { @class = "radio-inline" })
-            </div>
-            @Html.ValidationMessageFor(m => m.ActivityLevel, String.Empty, new { @class = "text-danger" })
-        </div>
+                        @Html.Label("Extremely Active")
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Extremely Active", new { @class = "radio-inline" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ActivityLevel, String.Empty, new { @class = "text-danger" })
+                </div>
                 <div class="box-margin">
                     <button type="submit" class="btn btn-primary buttoninAlign">Submit</button>
                 </div>
-           
-    }
-</div>
-</section>
+            }
+        </div>
+    </section>
 
