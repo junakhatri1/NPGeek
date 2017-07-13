@@ -38,6 +38,7 @@ namespace Capstone.Web.Controllers
             {
                 return HttpNotFound();
             }
+            park.TempScale = tempScale;
             return View("Detail", park);
         }
 
