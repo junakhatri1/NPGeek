@@ -23,13 +23,13 @@ namespace Capstone.Web.Models
         [Required(ErrorMessage = "*")]
         public string State { get; set; }
 
-        [Required(ErrorMessage = "Select one")]
+        [Required(ErrorMessage = "*")]
         [Display(Name = "Activity Level")]
         public string ActivityLevel { get; set; }
 
         public static List<SelectListItem> AllParkNames { get; } = new List<SelectListItem>()
        {
-            new SelectListItem() {Text = "SELECT ONE ", Value = "" },
+           new SelectListItem() {Text = "SELECT ONE ", Value = "" },
            new SelectListItem() {Text = "Cuyahoga Valley National Park", Value = "CVNP" },
            new SelectListItem() {Text = "Everglades National Park", Value = "ENP" },
            new SelectListItem() {Text = "Grand Canyon National Park", Value = "GCNP" },

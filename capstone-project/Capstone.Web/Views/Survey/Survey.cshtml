@@ -43,19 +43,21 @@
                 </div>
 
                 <div class="radio row box-margin">
+                    
                     <b class="activity">  Activity Level</b>
-                    <div>
-                        @Html.Label("Inactive", new { @class = "inactive" })
-                        @Html.RadioButtonFor(m => m.ActivityLevel, "Inactive")
-
-                        @Html.Label("Sedentary")
+                    <div style="padding-left:80px; display: inline-block">
+                
+                        @Html.RadioButtonFor(m => m.ActivityLevel, "Inactive")                      
+                        @Html.Label("Inactive")
+                      
                         @Html.RadioButtonFor(m => m.ActivityLevel, "Sedentary", new { @class = "radio-inline" })
-
-                        @Html.Label("Active")
+                        @Html.Label("Sedentary")
+                   
                         @Html.RadioButtonFor(m => m.ActivityLevel, "Active", new { @class = "radio-inline" })
-
-                        @Html.Label("Extremely Active")
+                        @Html.Label("Active")
+                      
                         @Html.RadioButtonFor(m => m.ActivityLevel, "Extremely Active", new { @class = "radio-inline" })
+                        @Html.Label("Extremely Active")
                     </div>
                     @Html.ValidationMessageFor(m => m.ActivityLevel, String.Empty, new { @class = "text-danger" })
                 </div>
@@ -63,6 +65,6 @@
                     <button type="submit" class="btn btn-primary buttoninAlign">Submit</button>
                 </div>
             }
-        </div>
+       </div>
     </section>
 

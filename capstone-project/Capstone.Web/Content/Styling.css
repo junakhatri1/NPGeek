@@ -71,7 +71,8 @@ label {
 }
 
 .activity {
-    float: left;
+  clear: right;
+    position: relative;
 }
 
 .sectionMargin {
@@ -85,9 +86,9 @@ label {
     padding-bottom: 10px;
 }
 
-.inactive {
-    margin-left: 60px;
-}
+/*.inactive {
+    margin-left:60px;
+}*/
 
 .stateError {
     float: right;
